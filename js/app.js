@@ -1,24 +1,25 @@
 
-document.querySelectorAll('.nav').forEach(btn=>{
- btn.onclick=()=>{
-  document.querySelectorAll('.nav').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById(btn.dataset.view).classList.add('active');
- }
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+b.classList.add('active');document.getElementById(b.dataset.v).classList.add('active');
 });
-
-document.getElementById('saveGym')?.addEventListener('click',()=>{
- localStorage.setItem('cloe_gym_backup',JSON.stringify({saved:new Date().toISOString()}));
- alert('Sesión guardada (demo base para ampliar)');
-});
-
-function runCoach(){
- const f=+document.getElementById('fatigue').value;
- const s=+document.getElementById('sleep').value;
- let msg='Mantener carga.';
- if(f>7) msg='Semana descarga: -15% volumen.';
- if(s<5) msg+=' Priorizar recuperación.';
- document.getElementById('coachOut').innerHTML=msg;
+function guardarGym(){
+let d={sq:document.getElementById('sq').value,rdl:document.getElementById('rdl').value};
+localStorage.setItem('cloe_gym_log',JSON.stringify(d));
+document.getElementById('gymout').innerText='Sesión guardada';
 }
-window.runCoach=runCoach;
+function analizar(){
+let f=+document.getElementById('fatiga').value;
+let txt='Semana sólida. ';
+if(f>7) txt='Descarga recomendada -15% volumen.';
+document.getElementById('analisis').innerText=txt;
+}
+function generarSemana(){
+document.getElementById('salidaSemana').innerText='Semana nueva: +5% volumen, tirada +2km, cuestas mantienen carga.';
+}
+function exportar(){
+let data={gym:localStorage.getItem('cloe_gym_log')};
+let blob=new Blob([JSON.stringify(data)],{type:'application/json'});
+let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='backup_cloe.json';a.click();
+}
