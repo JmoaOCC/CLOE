@@ -1,1 +1,2 @@
-# CLOE 2.0 en español para GitHub Pages\nSube todo al repo manteniendo index.html en raíz.
+# CLOE 2.1
+Subir contenido al repo GitHub Pages manteniendo index.html en raíz.

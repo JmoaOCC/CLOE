@@ -1,44 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CLOE 2.0 Adaptive Coach</title>
+<title>CLOE 2.1 Adaptive Half Marathon Coach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <script defer src="js/app.js"></script>
 </head>
 <body>
-<div class="layout">
+<div class="shell">
 <aside class="sidebar">
-<h1>CLOE 2.0</h1>
-<p>Coach adaptativo media maratón</p>
-<button class="tab active" data-v="inicio">Inicio</button>
-<button class="tab" data-v="plan">Plan 21K</button>
-<button class="tab" data-v="gym">Gimnasio</button>
-<button class="tab" data-v="nutricion">Nutrición</button>
-<button class="tab" data-v="review">Informe semanal</button>
-<button class="tab" data-v="predictor">Predictor carrera</button>
-<button class="tab" data-v="coach">Coach Engine</button>
-<button class="tab" data-v="ajustes">Ajustes</button>
-</aside>
-<main>
-<section id="inicio" class="view active">
-<div class="hero card">
-<div><h2>Objetivo</h2><div class="big">1:56</div><p>Ritmo objetivo 5:30/km</p></div>
-<div class="big2">82%<span>Readiness</span></div>
+<div class="brand">
+<h1>CLOE 2.1</h1>
+<p>Training Intelligence Platform</p>
 </div>
-<div class="grid">
-<div class="card"><h3>Predicción actual</h3><div class="metric">2:01</div></div>
-<div class="card"><h3>Riesgo lesión</h3><div class="metric">Bajo</div></div>
-<div class="card"><h3>Carga semanal</h3><div class="metric">Moderada</div></div>
-</div>
-</section>
 
-<section id="plan" class="view">
+<nav>
+<button class="nav active" data-view="dashboard">Dashboard</button>
+<button class="nav" data-view="plan">Plan 21K</button>
+<button class="nav" data-view="fuerza">Fuerza</button>
+<button class="nav" data-view="nutricion">Nutrición</button>
+<button class="nav" data-view="review">Weekly Review</button>
+<button class="nav" data-view="predictor">Race Predictor</button>
+<button class="nav" data-view="coach">Coach Intelligence</button>
+<button class="nav" data-view="evolucion">Evolución</button>
+<button class="nav" data-view="sync">Sync</button>
+</nav>
+
+<div class="sidebarFooter">
+<div class="badge">🟢 Adaptive Mode Active</div>
+<div class="mono">Semana 1 · Inicio 27/04/2026</div>
+<div class="mono">Sync OK · V2.1</div>
+</div>
+</aside>
+
+<main class="main">
+
+<section id="dashboard" class="view active">
+<div class="hero card">
+<div>
+<h2>Objetivo Media Maratón</h2>
+<div class="heroMetric">1:56</div>
+<p>Ritmo objetivo 5:30/km</p>
+</div>
+<div class="gauge">82%<span>Readiness</span></div>
+</div>
+
+<div class="grid4">
 <div class="card">
-<h2>Semana 1 (inicio 27 abril 2026)</h2>
+<h3>Predicción</h3>
+<div class="metric">2:01</div>
+<p>Gap -5 min</p>
+</div>
+<div class="card">
+<h3>Riesgo lesión</h3>
+<div class="metric">Bajo</div>
+</div>
+<div class="card">
+<h3>Carga aguda</h3>
+<div class="metric">62</div>
+</div>
+<div class="card">
+<h3>Monotony</h3>
+<div class="metric">1.4</div>
+</div>
+</div>
+
+<div class="grid2">
+<div class="card">
+<h3>Próximo entreno</h3>
 <pre>
-D1
 Warmup
 - 10m 6:45/km Pace
 Main set 6x
@@ -46,36 +79,45 @@ Main set 6x
 - 2m 6:45/km Pace
 Cooldown
 - 10m 6:50/km Pace
-
-D2
-Warmup
-- 12m 6:45/km Pace
-Main set 6x
-- Cuesta 20s 5:10/km Pace
-- Recuperación 1m40s 6:50/km Pace
-Cooldown
-- 10m 6:45/km Pace
-
-D3
-Warmup
-- 10m 6:45/km Pace
-Main set
-- Tirada larga 50m 6:35/km Pace
-Cooldown
-- 5m 6:50/km Pace
 </pre>
-<button onclick="generarSemana()">Generar siguiente semana adaptativa</button>
-<div id="salidaSemana"></div>
+<button onclick="copiarIntervals()">Copiar para Intervals</button>
+</div>
+
+<div class="card">
+<h3>Coach Recommendation</h3>
+<div class="coachBox">
+🟢 Progresar<br>
++5% volumen próxima semana
+</div>
+</div>
 </div>
 </section>
 
-<section id="gym" class="view">
+<section id="plan" class="view">
 <div class="card">
-<h2>Registro de fuerza</h2>
+<h2>Plan Adaptativo</h2>
+<button onclick="generarSemana()">Generar semana nueva</button>
+<div id="weekgen" class="coachBox"></div>
+</div>
+</section>
+
+<section id="fuerza" class="view">
+<div class="card">
+<h2>Gym Progression Log</h2>
 <table>
-<tr><th>Ejercicio</th><th>Hecho</th><th>RPE</th><th>Vídeo</th></tr>
-<tr><td>Sentadilla goblet</td><td><input id="sq" placeholder="24kg 4x10"></td><td><input id="sqrpe"></td><td><a target=_blank href="https://www.youtube.com/results?search_query=sentadilla+goblet+técnica">▶</a></td></tr>
-<tr><td>Peso muerto rumano</td><td><input id="rdl"></td><td><input id="rdlrpe"></td><td><a target=_blank href="https://www.youtube.com/results?search_query=peso+muerto+rumano+técnica">▶</a></td></tr>
+<tr><th>Ejercicio</th><th>Carga</th><th>RPE</th><th>Video</th></tr>
+<tr>
+<td>Sentadilla Goblet</td>
+<td><input id="sq" placeholder="24kg 4x10"></td>
+<td><input id="rpe1" placeholder="8"></td>
+<td><a target="_blank" href="https://www.youtube.com/results?search_query=sentadilla+goblet+técnica">▶ Técnica</a></td>
+</tr>
+<tr>
+<td>Peso muerto rumano</td>
+<td><input id="rdl"></td>
+<td><input id="rpe2"></td>
+<td><a target="_blank" href="https://www.youtube.com/results?search_query=peso+muerto+rumano+técnica">▶ Técnica</a></td>
+</tr>
 </table>
 <button onclick="guardarGym()">Guardar sesión</button>
 <div id="gymout"></div>
@@ -83,31 +125,33 @@ Cooldown
 </section>
 
 <section id="nutricion" class="view">
-<div class="grid">
-<div class="card"><h3>Día series</h3><ul><li>Avena 80g</li><li>Yogur 200g</li><li>Pollo 180g</li><li>Arroz 90g seco</li></ul></div>
-<div class="card"><h3>Tirada larga</h3><ul><li>Carbo extra 130g</li><li>Gel km10</li><li>Gel km17</li></ul></div>
+<div class="grid4">
+<div class="card"><h3>Series</h3><ul><li>Avena 80g</li><li>Pollo 180g</li><li>Arroz 90g</li></ul></div>
+<div class="card"><h3>Cuestas</h3><ul><li>Pasta 100g</li><li>Pavo 160g</li></ul></div>
+<div class="card"><h3>Tirada larga</h3><ul><li>+130g carbos</li><li>Gel km10</li><li>Gel km17</li></ul></div>
+<div class="card"><h3>Descarga</h3><ul><li>Proteína alta</li><li>Carbo moderado</li></ul></div>
 </div>
 </section>
 
 <section id="review" class="view">
 <div class="card">
 <h2>Informe semanal</h2>
-Fatiga <input id="fatiga" type="range" min="1" max="10" value="5"><br><br>
-Sueño <input id="sueno" type="range" min="1" max="10" value="7"><br><br>
-Molestias <input id="mol" placeholder="gemelo cargado"><br><br>
+Fatiga <input type="range" min="1" max="10" id="fatiga" value="5"><br><br>
+Sueño <input type="range" min="1" max="10" id="sueno" value="7"><br><br>
+Molestias <input id="molestia" placeholder="ninguna"><br><br>
 <button onclick="analizar()">Generar análisis</button>
-<div id="analisis"></div>
+<div id="reviewout" class="coachBox"></div>
 </div>
 </section>
 
 <section id="predictor" class="view">
 <div class="card">
-<h2>Predictor Media Maratón</h2>
+<h2>Simulador carrera</h2>
 <ul>
-<li>5K 29:15</li>
-<li>10K 58:40</li>
-<li>15K 1:27</li>
-<li>Meta 1:56</li>
+<li>5k — 29:15</li>
+<li>10k — 58:40</li>
+<li>15k — 1:27</li>
+<li>Meta — 1:56</li>
 </ul>
 </div>
 </section>
@@ -115,17 +159,28 @@ Molestias <input id="mol" placeholder="gemelo cargado"><br><br>
 <section id="coach" class="view">
 <div class="card">
 <h2>Coach Intelligence</h2>
-<div id="sem">🟢 Mantener progresión</div>
+<div class="coachBox" id="coachpanel">🟢 Mantener progresión.</div>
 </div>
 </section>
 
-<section id="ajustes" class="view">
-<div class="card">
-<h2>Datos</h2>
-<button onclick="exportar()">Exportar backup JSON</button>
-<input type="file" id="imp">
-<p>Versión 2.0 esquema persistente</p>
+<section id="evolucion" class="view">
+<div class="grid4">
+<div class="card"><h3>Peso</h3><div class="metric">78.4</div></div>
+<div class="card"><h3>Grasa</h3><div class="metric">18%</div></div>
+<div class="card"><h3>Músculo</h3><div class="metric">61kg</div></div>
+<div class="card"><h3>VO2 est.</h3><div class="metric">48</div></div>
 </div>
 </section>
-</main></div>
-</body></html>
+
+<section id="sync" class="view">
+<div class="card">
+<h2>Datos</h2>
+<button onclick="exportar()">Exportar backup</button>
+<p>Persistencia con schema version sin perder histórico.</p>
+</div>
+</section>
+
+</main>
+</div>
+</body>
+</html>
