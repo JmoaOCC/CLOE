@@ -1,2 +1,2 @@
-# CLOE 2.1
-Subir contenido al repo GitHub Pages manteniendo index.html en raíz.
+# Jorge 21K
+Sube estos archivos a un repositorio y activa GitHub Pages en Settings > Pages.
