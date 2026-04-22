@@ -1,12 +1,9 @@
-# JORGE 21K V1.2 Sync Layer Scaffold
+# JORGE 21K Build in Public Cycle 01
 
-Este ZIP incluye scaffold inicial para integrar:
-- Supabase
-- IndexedDB
-- Sync engine
-- Estructura modular
+Repositorio inicial preparado para GitHub con roadmap conjunto:
+- entrenamiento 14 semanas
+- roadmap producto
+- milestones
+- estructura para evolucionar en GitHub Pages
 
-Antes de usar:
-1. Sustituye TU_URL y TU_KEY en js/services/supabase.js
-2. Crea tablas SQL del documento de implementación
-3. Integra los módulos con tu V1 actual
+Sube el contenido a un repositorio nuevo y activa GitHub Pages.
