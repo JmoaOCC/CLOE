@@ -1,48 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JORGE 21K Roadmap</title>
-<link rel="stylesheet" href="styles.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Jorge Adaptive Coach</title>
+<link rel="stylesheet" href="css/styles.css">
+<script defer src="js/app.js"></script>
 </head>
 <body>
-<div class="wrap">
-<h1>JORGE 21K — Build in Public Cycle 01</h1>
-
+<div class="app">
+<h1>JORGE 21K — Adaptive Coach</h1>
+<p>Starter GitHub Pages package listo para publicar.</p>
 <section class="card">
-<h2>Roadmap de Versiones</h2>
+<h2>Módulos incluidos</h2>
 <ul>
-<li>27 abril — V1.2 Sync Foundation</li>
-<li>25 mayo — V1.3 Smart Metrics</li>
-<li>22 junio — V1.5 Intelligence</li>
-<li>Race Week — V2 Beta Concepts</li>
+<li>Calendario semanal</li>
+<li>Check-ins post entreno</li>
+<li>Full Body Tone</li>
+<li>Nutrición + recomposición</li>
+<li>CSV Intervals Engine</li>
+<li>Resumen IA adaptativo</li>
 </ul>
-</section>
-
-<section class="card">
-<h2>14 semanas (resumen)</h2>
-<ol>
-<li>Base aeróbica</li>
-<li>Construcción</li>
-<li>Específico 21K</li>
-<li>Taper + Race</li>
-</ol>
-</section>
-
-<section class="card">
-<h2>Sprints producto</h2>
-<ul>
-<li>Sync Layer</li>
-<li>PWA</li>
-<li>Fatigue Score</li>
-<li>Predictor 21K</li>
-</ul>
-</section>
-
-<section class="card">
-<h2>Weekly Review</h2>
-<p>Entrenamiento · Producto · Aprendizajes</p>
+<button onclick="generateWeek()">Generar semana siguiente</button>
+<pre id="out"></pre>
 </section>
 </div>
 </body>
